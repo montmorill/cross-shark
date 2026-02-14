@@ -20,11 +20,11 @@ defineProps<{
     <BreadcrumbList>
       <BreadcrumbItem v-for="part, index in parts" :key="part.path">
         <BreadcrumbSeparator class="hidden md:block" />
-        <a :href="part.path">
+        <RouterLink :to="part.path">
           <component :is="index === parts.length - 1 ? BreadcrumbPage : 'span'">
             {{ part.name }}
           </component>
-        </a>
+        </RouterLink>
       </BreadcrumbItem>
     </BreadcrumbList>
   </Breadcrumb>

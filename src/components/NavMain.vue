@@ -45,23 +45,23 @@ const navMainActive = useStorage<Record<string, boolean>>('navMainActive', {})
         class="group/collapsible"
       >
         <SidebarMenuItem>
-          <RouterLink :to="`/${item.slug}`">
-            <SidebarMenuButton :tooltip="$t(`${item.slug}.title`)">
-              <component :is="item.icon" v-if="item.icon" />
+          <SidebarMenuButton :tooltip="$t(`${item.slug}.title`)" :is-active="$route.path === `/${item.slug}` ">
+            <RouterLink :to="`/${item.slug}`" class="flex items-center gap-2">
+              <component :is="item.icon" v-if="item.icon" class="size-4 shrink-0" />
               <span>{{ $t(`${item.slug}.title`) }}</span>
-              <CollapsibleTrigger class="grow" @click.prevent>
-                <ChevronRight class="h-4 ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-              </CollapsibleTrigger>
-            </SidebarMenuButton>
-          </RouterLink>
+            </RouterLink>
+            <CollapsibleTrigger class="grow pl-auto">
+              <ChevronRight class="size-4 ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+            </CollapsibleTrigger>
+          </SidebarMenuButton>
           <CollapsibleContent>
             <SidebarMenuSub>
               <SidebarMenuSubItem v-for="subItem in item.items" :key="subItem.slug">
-                <SidebarMenuSubButton as-child :is-active="$route.path.startsWith(item.slug)">
-                  <a :href="`/${item.slug}/${subItem.slug}`">
+                <SidebarMenuSubButton as-child :is-active="$route.path === `/${item.slug}/${subItem.slug}`">
+                  <RouterLink :to="`/${item.slug}/${subItem.slug}`">
                     <component :is="subItem.icon" v-if="subItem.icon" />
                     <span>{{ $t(`${item.slug}.${subItem.slug}`) }}</span>
-                  </a>
+                  </RouterLink>
                 </SidebarMenuSubButton>
               </SidebarMenuSubItem>
             </SidebarMenuSub>

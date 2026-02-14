@@ -65,12 +65,9 @@ const navData = [
 <template>
   <Sidebar v-bind="props">
     <SidebarHeader>
-      <a href="/">
-        <NavBrand
-          name="Cross Shark"
-          :logo="h(Icon, { iconNode: shark, name: 'shark' })"
-        />
-      </a>
+      <RouterLink to="/">
+        <NavBrand name="Cross Shark" :logo="h(Icon, { iconNode: shark, name: 'shark' })" />
+      </RouterLink>
     </SidebarHeader>
     <SidebarContent>
       <NavMain :items="navData" />
