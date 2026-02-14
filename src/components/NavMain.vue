@@ -45,13 +45,15 @@ const navMainActive = useStorage<Record<string, boolean>>('navMainActive', {})
         class="group/collapsible"
       >
         <SidebarMenuItem>
-          <CollapsibleTrigger as-child>
+          <RouterLink :to="`/${item.slug}`">
             <SidebarMenuButton :tooltip="$t(`${item.slug}.title`)">
               <component :is="item.icon" v-if="item.icon" />
               <span>{{ $t(`${item.slug}.title`) }}</span>
-              <ChevronRight class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+              <CollapsibleTrigger class="grow" @click.prevent>
+                <ChevronRight class="h-4 ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+              </CollapsibleTrigger>
             </SidebarMenuButton>
-          </CollapsibleTrigger>
+          </RouterLink>
           <CollapsibleContent>
             <SidebarMenuSub>
               <SidebarMenuSubItem v-for="subItem in item.items" :key="subItem.slug">

@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { SidebarProps } from '@/components/ui/sidebar'
 
+import { shark } from '@lucide/lab'
 import {
   Flower,
   FolderDown,
   FolderUp,
+  Icon,
   Images,
   Video,
 } from 'lucide-vue-next'
@@ -66,7 +68,7 @@ const navData = [
       <a href="/">
         <NavBrand
           name="Cross Shark"
-          :logo="h('img', { src: '/icon.svg', alt: 'Cross Shark' })"
+          :logo="h(Icon, { iconNode: shark, name: 'shark' })"
         />
       </a>
     </SidebarHeader>

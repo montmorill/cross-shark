@@ -8,18 +8,23 @@ import {
 } from '@/components/ui/breadcrumb'
 
 defineProps<{
-  path: string[]
+  parts: {
+    name: string
+    path: string
+  }[]
 }>()
 </script>
 
 <template>
   <Breadcrumb>
     <BreadcrumbList>
-      <BreadcrumbItem v-for="part, index in path" :key="part">
+      <BreadcrumbItem v-for="part, index in parts" :key="part.path">
         <BreadcrumbSeparator class="hidden md:block" />
-        <component :is="index === path.length - 1 ? BreadcrumbPage : 'span'">
-          {{ part }}
-        </component>
+        <a :href="part.path">
+          <component :is="index === parts.length - 1 ? BreadcrumbPage : 'span'">
+            {{ part.name }}
+          </component>
+        </a>
       </BreadcrumbItem>
     </BreadcrumbList>
   </Breadcrumb>

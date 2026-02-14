@@ -13,10 +13,20 @@ const route = useRoute()
 
 const breadcrumb = computed(() => {
   const parts = route.path.split('/').filter(Boolean)
-  if (parts.length === 2) {
-    return [t(`${parts[0]}.title`), t(`${parts[0]}.${parts[1]}`)]
+  const breadcrumb = []
+  if (parts[0]) {
+    breadcrumb.push({
+      name: t(`${parts[0]}.title`),
+      path: `/${parts[0]}`,
+    })
   }
-  return parts
+  if (parts[1]) {
+    breadcrumb.push({
+      name: t(`${parts[0]}.${parts[1]}`),
+      path: `/${parts[0]}/${parts[1]}`,
+    })
+  }
+  return breadcrumb
 })
 </script>
 
@@ -31,7 +41,7 @@ const breadcrumb = computed(() => {
             orientation="vertical"
             class="mr-2 data-[orientation=vertical]:h-4"
           />
-          <Breadcrumb :path="breadcrumb" />
+          <Breadcrumb :parts="breadcrumb" />
         </div>
       </header>
       <RouterView />

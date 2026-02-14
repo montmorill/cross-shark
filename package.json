@@ -11,6 +11,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@lucide/lab": "^0.1.2",
     "@tailwindcss/vite": "^4.1.18",
     "@types/simple-icons": "^5.8.0",
     "@vueuse/core": "^14.2.1",
