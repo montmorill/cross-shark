@@ -52,8 +52,6 @@ def parse_content(url: str):
 
     payload = make_parse_payload(url)
 
-    print(payload)
-
     response = requests.post(
         PARSE_URL,
         data=encrypt_data(payload),
