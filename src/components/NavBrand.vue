@@ -11,7 +11,6 @@ defineProps<{
   name: string
   logo: Component
   description?: string
-
 }>()
 </script>
 
